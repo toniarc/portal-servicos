@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+    
+    postgres:
+        image: postgres:15.2-alpine
+        ports:
+            - "5432:5432"
+        volumes:
+            - ~/portalservicos/postgres-data:/var/lib/postgresql/data
+        networks:
+            - spring-cloud-network
+        environment:
+            - POSTGRES_DB=portalservicos
+            - POSTGRES_PASSWORD=portalservicos
+        healthcheck:
+            test: [ "CMD-SHELL", "sh -c 'pg_isready -U postgres -d portalservicos'" ]
+            interval: 2s
+            timeout: 3s
+            retries: 3
+
+#    minio:
+#        image: quay.io/minio/minio
+#        command: server /data --console-address ":9001"
+#        ports:
+#            - "9000:9000"
+#            - "9001:9001"
+#        networks:
+#            - spring-cloud-network
+#        volumes:
+#            -   ~/portalservicos/minio-data:/data
+#        environment:
+#            - MINIO_ROOT_USER=${S3_ACCESS_KEY}
+#            - MINIO_ROOT_PASSWORD=${S3_SECRET_KEY}
+#        healthcheck:
+#            test: [ "CMD", "mc", "ready", "local" ]
+#            interval: 2s
+#            timeout: 10s
+#            retries: 5
+
+    app:
+        image: toniarc/portalservicos-api:latest
+        ports:
+            -   "8080:8080"
+        networks:
+            - spring-cloud-network
+        env_file:
+            -   '.env'
+        depends_on:
+            - postgres
+
+networks:
+    spring-cloud-network:
+        driver: bridge
