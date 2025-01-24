@@ -12,6 +12,7 @@ import br.com.portalservicos.util.mapper.TipoServicoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,14 +28,11 @@ public class OrgaoController {
     private OrgaoRepository orgaoRepository;
 
     @GetMapping
-    public PaginatedListResponseDto<OrgaoDto> getTiposServico(
+    public List<OrgaoDto> getOrgaos(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 
-        PageRequest pageRequest = PageRequest.of(page, size);
-        Page<OrgaoEntity> orgaoPage = orgaoRepository.findAll(pageRequest);
-        List<OrgaoDto> tipoServicoList = OrgaoMapper.INSTANCE.map(orgaoPage.getContent());
-
-        return new PaginatedListResponseDto<>(page, size, orgaoPage.getTotalElements(), tipoServicoList);
+        List<OrgaoEntity> orgaos = orgaoRepository.findAll(Sort.by("nome"));
+        return OrgaoMapper.INSTANCE.map(orgaos);
     }
 }

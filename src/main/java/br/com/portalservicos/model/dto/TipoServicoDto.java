@@ -6,4 +6,5 @@ import lombok.Data;
 public class TipoServicoDto {
     private Long id;
     private String nome;
+    private String icone;
 }

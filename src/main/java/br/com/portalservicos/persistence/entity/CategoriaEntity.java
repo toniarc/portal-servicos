@@ -17,6 +17,9 @@ public class CategoriaEntity {
     private Long id;
 
     @Column(length = 100)
+    private String nome;
+
+    @Column(length = 200)
     private String descricao;
 
     private String icone;

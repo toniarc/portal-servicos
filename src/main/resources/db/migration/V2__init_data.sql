@@ -4,10 +4,10 @@ INSERT INTO portalservicos.tipo_servico (nome, descricao, icone) VALUES ('Empres
 INSERT INTO portalservicos.tipo_servico (nome, descricao, icone) VALUES ('Servidor', 'Encontre serviços destinados a servidores e empregados públicos', 'e-font-icon-svg e-fas-id-card-alt');
 
 
-INSERT INTO portalservicos.categoria (descricao, icone ) VALUES ('Educação', 'e-font-icon-svg e-fas-id-card-alt');
-INSERT INTO portalservicos.categoria (descricao, icone ) VALUES ('Habitação', 'e-font-icon-svg e-fas-house-user');
-INSERT INTO portalservicos.categoria (descricao, icone ) VALUES ('Saúde', 'e-font-icon-svg e-fas-heartbeat');
-INSERT INTO portalservicos.categoria (descricao, icone ) VALUES ('Trânsito', 'e-font-icon-svg e-fas-car');
+INSERT INTO portalservicos.categoria (nome, descricao, icone ) VALUES ('Educação', 'Educação', 'e-font-icon-svg e-fas-id-card-alt');
+INSERT INTO portalservicos.categoria (nome, descricao, icone ) VALUES ('Habitação', 'Habitação', 'e-font-icon-svg e-fas-house-user');
+INSERT INTO portalservicos.categoria (nome, descricao, icone ) VALUES ('Saúde', 'Saúde', 'e-font-icon-svg e-fas-heartbeat');
+INSERT INTO portalservicos.categoria (nome, descricao, icone ) VALUES ('Trânsito', 'Trânsito', 'e-font-icon-svg e-fas-car');
 
 
 INSERT INTO portalservicos.orgao (sigla, nome) VALUES ('SEMAD', 'Secretaria Municipal de Administração');

@@ -10,7 +10,8 @@ CREATE TABLE portalservicos.orgao (
 -- Criando a tabela categoria
 CREATE TABLE portalservicos.categoria (
     id BIGSERIAL PRIMARY KEY,
-    descricao VARCHAR(100),
+    nome VARCHAR(100),
+    descricao VARCHAR(200),
     icone VARCHAR(100)
 );
 
