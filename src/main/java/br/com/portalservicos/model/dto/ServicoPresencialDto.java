@@ -8,6 +8,6 @@ import java.util.List;
 public class ServicoPresencialDto {
 
     private Long id;
+    private List<LocalAtendimentoDto> locaisAtendimento;
 
-    private List<HorarioAtendimentoDto> horariosAtendimento;
 }
